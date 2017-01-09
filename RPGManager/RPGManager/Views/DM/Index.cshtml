@@ -3,6 +3,12 @@
     Layout = "~/Shared/_Layout1.cshtml";
 }
 
+<style>
+    .boundary{
+        border: 1px dotted black;
+    }
+</style>
+
 <script>
 
             /*
@@ -299,7 +305,7 @@ KNOCKOUT JS CODE
         <textarea class="form-control" rows="12" id="notes" style="max-width: 100%;"></textarea>
     </div>
 
-    <div style="width: 100%; height: 200px; border: solid lightgray 1px; border-radius: 4px; overflow:auto;">
+    <div style="width: 100%; height: 200px; border: solid lightgray 1px; border-radius: 4px; overflow:auto;" class="form-group">
         <table style="float:left;">
             <thead>
                 <tr>
@@ -351,6 +357,26 @@ KNOCKOUT JS CODE
         </table>
         <div style="width: 35%; float: right; height: 90%; margin: 10px; overflow:hidden;">
             <textarea style="width:100%; height:100%; resize:none; background-color:white;" class="form-control" id="taResults" readonly="readonly"></textarea>
+        </div>
+    </div> 
+
+    <!--turn/time tracking-->
+    <div class="boundary form-group">
+        <!--time tracker-->
+        <div class="boundary">
+
+        </div>
+        <!--turn tracker-->
+        <div class="boundary row-fluid">
+            <span style="line-height: 35px;">Turn:</span> 
+            <div class="input-group" style="padding-left:10px; padding-right:10px; display:inline-block;">
+                <input style="width:70px;" type="text" class="form-control" value="00:00">
+                <span class="input-group-btn" style="float:left">
+                    <input type="button" class="btn btn-default" value="+1" />
+                    <input type="button" class="btn btn-default" value="Reset" />
+                </span>
+            </div>
+            <span id="turnSpan" style="line-height: 35px;">0</span>
         </div>
     </div>
 </div>
