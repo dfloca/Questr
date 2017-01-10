@@ -368,15 +368,15 @@ KNOCKOUT JS CODE
         </div>
         <!--turn tracker-->
         <div class="boundary row-fluid">
-            <span style="line-height: 35px;">Turn:</span> 
+            <div class="time-track-text">Turn:</div> 
+            <div id="turn-value-num" class="time-track-text" style="padding-left: 10px; width: 40px;">0</div>
             <div class="input-group" style="padding-left:10px; padding-right:10px; display:inline-block;">
-                <input style="width:70px;" type="text" class="form-control" value="00:00">
+                <input style="width:70px;" type="text" class="form-control" id="turn-value-time" value="00:00">
                 <span class="input-group-btn" style="float:left">
-                    <input type="button" class="btn btn-default" value="+1" />
-                    <input type="button" class="btn btn-default" value="Reset" />
+                    <input type="button" class="btn btn-default" id="btn-add-turn" value="+1" />
+                    <input type="button" class="btn btn-default" id="btn-reset-turn" value="Reset" />
                 </span>
             </div>
-            <span id="turnSpan" style="line-height: 35px;">0</span>
         </div>
     </div>
 </div>
@@ -437,6 +437,9 @@ KNOCKOUT JS CODE
                         <tr>
                             <td>
                                 <span data-bind="text: 'Level: ' + level()"></span>
+                            </td>
+                            <td>
+                                <span data-bind="text: ' : ' + exp()"></span>
                             </td>
                             <td>
                                 <div class="progress progress-custom" style="width: 100%; margin-top: 20px;" data-toggle="tooltip" data-bind="attr: {title: $data.expText(), 'data-original-title': $data.expText()}">

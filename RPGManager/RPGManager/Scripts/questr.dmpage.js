@@ -1,6 +1,43 @@
 ﻿$(document).ready(function () {
     var modBoolPlus = true;
 
+    var battleTimerSec = 0;
+    var battleTimerMin = 0;
+    var battleTracker = 0;
+
+
+    function makeTimer(secTime, minTime) {
+        var strSec;
+        var strMin;
+
+        strSec = ((secTime < 10) ? "0" + secTime : secTime);
+        strMin = ((minTime < 10) ? "0" + minTime : minTime);
+
+        return strMin + ":" + strSec;
+    };
+
+    $("#btn-add-turn").click(function () {
+        battleTimerSec += 6;
+        if(battleTimerSec >= 60)
+        {
+            battleTimerMin++;
+            battleTimerSec = 0;
+        }
+        battleTracker++;
+        var textShow = makeTimer(battleTimerSec, battleTimerMin);
+
+        $("#turn-value-time").val(textShow);
+        $("#turn-value-num").text(battleTracker);
+    });
+
+    $("#btn-reset-turn").click(function () {
+        battleTimerMin = 0;
+        battleTimerSec = 0;
+        battleTracker = 0;
+        $("#turn-value-time").val("00:00");
+        $("#turn-value-num").text("0");
+    });
+
     $(function () {
         $("#sortable").sortable({
             axis: "x",
