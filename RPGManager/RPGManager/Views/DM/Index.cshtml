@@ -161,6 +161,26 @@ KNOCKOUT JS CODE
 
     ];
 
+    function SetDefaultToastOptions() {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-bottom-left",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+    };
+
     var PCModel = function (pcs) {
         var self = this;
 
@@ -270,23 +290,7 @@ KNOCKOUT JS CODE
 
             if(newExp > oldExp){
                 var expDiff = parseInt(newExp) - parseInt(oldExp);
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": false,
-                    "positionClass": "toast-bottom-left",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
+                SetDefaultToastOptions();
                 Command: toastr["success"](data.name + " - Gained: " + expDiff + "exp", "Exp Gained!");
             }
             data.exp(newExp);
