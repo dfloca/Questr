@@ -5,7 +5,7 @@
     var battleTimerMin = 0;
     var battleTracker = 0;
 
-    var todLenLetter = "M";
+    var todLenLetter = "H";
     var todTimeMin = 0;
     var todTimeHour = 12;
     var todTimePeriod = "PM"
