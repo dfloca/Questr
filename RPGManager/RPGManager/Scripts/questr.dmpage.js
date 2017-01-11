@@ -8,7 +8,7 @@
     var todLenLetter = "M";
     var todTimeMin = 0;
     var todTimeHour = 12;
-    var todTimePeriod = "AM"
+    var todTimePeriod = "PM"
 
 
     function makeTimer(secTime, minTime) {
