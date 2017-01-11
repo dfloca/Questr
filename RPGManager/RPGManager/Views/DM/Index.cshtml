@@ -233,17 +233,24 @@ KNOCKOUT JS CODE
         };
 
         self.hpModClick = function (data, event) {
-            if (data.hpBoolPlus() == false)
-                var newHp = parseInt(data.obCurHp()) - parseInt(data.hpModAmt());
+            if (parseInt(data.hpModAmt())) {
+                if (data.hpBoolPlus() == false)
+                    var newHp = parseInt(data.obCurHp()) - parseInt(data.hpModAmt());
+                else
+                    var newHp = parseInt(data.obCurHp()) + parseInt(data.hpModAmt());
+
+                if (newHp < 0)
+                    newHp = 0;
+                else if (newHp > data.obMaxHp())
+                    newHp = data.obMaxHp();
+
+                data.obCurHp(newHp);
+            }
             else
-                var newHp = parseInt(data.obCurHp()) + parseInt(data.hpModAmt());
-
-            if (newHp < 0)
-                newHp = 0;
-            else if (newHp > data.obMaxHp())
-                newHp = data.obMaxHp();
-
-            data.obCurHp(newHp);
+            {
+                SetDefaultToastOptions();
+                Command: toastr["warning"]("HP Mod Input not valid: NaN.", "Warning!");
+            }
         };
         //end of hp handling
 
