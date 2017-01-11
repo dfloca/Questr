@@ -6,6 +6,9 @@
     var battleTracker = 0;
 
     var todLenLetter = "M";
+    var todTimeMin = 0;
+    var todTimeHour = 12;
+    var todTimePeriod = "AM"
 
 
     function makeTimer(secTime, minTime) {
@@ -183,6 +186,58 @@
             $("#btn-tod-len").val("M");
             $("#btn-tod-len").removeClass("blackButton");
             todLenLetter = "M";
+        }
+    });
+
+    $("#tod-go").click(function () {
+        var input = $("#tod-mod").val();
+        //add time to either hour or minute depending on the todLenLetter variable.
+        if(!isNaN(input))
+        {
+            //add to either minute or second depending on the letter
+            if(todLenLetter == "M")
+            {
+                //add minutes
+                todTimeMin += parseInt(input);
+                while(todTimeMin >= 60)
+                {
+                    todTimeMin = todTimeMin - 60;
+                    todTimeHour++;
+                }
+            }
+            else if(todLenLetter == "H")
+            {
+                //add hours
+                todTimeHour += parseInt(input);
+            }
+
+            while (todTimeHour >= 12) {
+                todTimeHour = todTimeHour - 12;
+                if (todTimePeriod == "AM")
+                    todTimePeriod = "PM";
+                else
+                    todTimePeriod = "AM";
+            }
+            //wrap all that up into a neat "00:00 AM" format and set that up.
+            var retVal;
+
+            if (todTimeHour == 0) {
+                retVal = "12";
+                if (todTimePeriod == "AM")
+                    todTimePeriod == "PM";
+            }
+            else
+                retVal = (todTimeHour < 10) ? "0" + todTimeHour : todTimeHour;
+            retVal += ":"
+            retVal += (todTimeMin < 10) ? "0" + todTimeMin : todTimeMin;
+            retVal += " " + todTimePeriod;
+
+            $("#tod-val").val(retVal);
+        }
+        //check to see if input has a ":". if so, they may be trying to add a set timeframe, do that.
+        else if(input.includes(":"))
+        {
+            var ar = input.split(":");
         }
     });
 });
