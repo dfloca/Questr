@@ -10,6 +10,26 @@
     var todTimeHour = 12;
     var todTimePeriod = "PM"
 
+    function setDefaultToastOptions() {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": false,
+            "positionClass": "toast-bottom-left",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    }
+
 
     function makeTimer(secTime, minTime) {
         var strSec;
@@ -79,63 +99,15 @@
     $("#btnRoll").click(function () {
         //warning toast
         if (!$.isNumeric($("#inAmt").val()) || !$.isNumeric($("#inNFace").val())) {
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": true,
-                "progressBar": false,
-                "positionClass": "toast-bottom-left",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+            setDefaultToastOptions();
             Command: toastr["warning"]("Roll Not Valid: NaN", "Warning");
         }
         else if (parseFloat($("#inAmt").val()) <= 0) {
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": true,
-                "progressBar": false,
-                "positionClass": "toast-bottom-left",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+            setDefaultToastOptions();
             Command: toastr["warning"]("Roll Not Valid: Amount must be at least One (1).", "Warning");
         }
         else if (parseFloat($("#inNFace").val()) <= 1) {
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": true,
-                "progressBar": false,
-                "positionClass": "toast-bottom-left",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+            setDefaultToastOptions();
             Command: toastr["warning"]("Roll Not Valid: Number of die faces must be at least Two (2).", "Warning")
         }
         else {
@@ -192,7 +164,7 @@
     $("#tod-go").click(function () {
         var input = $("#tod-mod").val();
         //add time to either hour or minute depending on the todLenLetter variable.
-        if(!isNaN(input))
+        if(parseInt(input))
         {
             //add to either minute or second depending on the letter
             if(todLenLetter == "M")
@@ -238,25 +210,14 @@
         else if(input.includes(":"))
         {
             //var ar = input.split(":");
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": true,
-                "progressBar": false,
-                "positionClass": "toast-bottom-left",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+            setDefaultToastOptions();
             Command: toastr["warning"]("We don't allow that yet, though we will soon.", "Warning");
 
+        }
+        else {
+            //var ar = input.split(":");
+            setDefaultToastOptions();
+            Command: toastr["warning"]("Sorry we didn't recognize that.", "Warning");
         }
     });
 });
