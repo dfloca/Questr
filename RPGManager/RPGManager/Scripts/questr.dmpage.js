@@ -5,6 +5,8 @@
     var battleTimerMin = 0;
     var battleTracker = 0;
 
+    var todLenLetter = "M";
+
 
     function makeTimer(secTime, minTime) {
         var strSec;
@@ -165,6 +167,22 @@
             var newStr = str + "\n" + wholeStr;
             $("#taResults").val(newStr);
             $("#inResult").val(total);
+        }
+    });
+
+    $("#btn-tod-len").click(function () {
+        if(todLenLetter == "M")
+        {
+            //change the letter to H, change the class on the object
+            $("#btn-tod-len").val("H");
+            $("#btn-tod-len").addClass("blackButton");
+            todLenLetter = "H";
+        }
+        else if(todLenLetter == "H")
+        {
+            $("#btn-tod-len").val("M");
+            $("#btn-tod-len").removeClass("blackButton");
+            todLenLetter = "M";
         }
     });
 });

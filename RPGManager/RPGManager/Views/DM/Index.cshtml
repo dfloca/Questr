@@ -3,11 +3,11 @@
     Layout = "~/Shared/_Layout1.cshtml";
 }
 
-<style>
+@*<style>
     .boundary{
         border: 1px dotted black;
     }
-</style>
+</style>*@
 
 <script>
 
@@ -361,17 +361,24 @@ KNOCKOUT JS CODE
     </div> 
 
     <!--turn/time tracking-->
-    <div class="boundary form-group">
+    <div class="form-group boundary">
         <!--time tracker-->
-        <div class="boundary">
-
+        <div style="display:inline-block;">
+            <div class="input-group" style="padding-left:10px; padding-right:10px; display:inline-block;">
+                <input style="width:90px; background-color: white;"readonly="readonly" type="text" class="form-control" id="tod-val" value="00:00 AM">
+                <input style="width:60px;" type="text" class="form-control" id="tod-mod" value="0">
+                <span class="input-group-btn" style="float:left">
+                    <input type="button" class="btn btn-default" id="btn-tod-len" value="M" style="width: 40px"/>
+                    <input type="button" class="btn btn-default" id="tod-go" value="Go" />
+                </span>
+            </div>
         </div>
         <!--turn tracker-->
-        <div class="boundary row-fluid">
-            <div class="time-track-text">Turn:</div> 
+        <div style="display:inline-block; float:right">
+            <div class="time-track-text">Turn:</div>
             <div id="turn-value-num" class="time-track-text" style="padding-left: 10px; width: 40px;">0</div>
             <div class="input-group" style="padding-left:10px; padding-right:10px; display:inline-block;">
-                <input style="width:70px;" type="text" class="form-control" id="turn-value-time" value="00:00">
+                <input style="width:70px; background-color: white;" type="text" class="form-control" id="turn-value-time" readonly="readonly" value="00:00">
                 <span class="input-group-btn" style="float:left">
                     <input type="button" class="btn btn-default" id="btn-add-turn" value="+1" />
                     <input type="button" class="btn btn-default" id="btn-reset-turn" value="Reset" />
